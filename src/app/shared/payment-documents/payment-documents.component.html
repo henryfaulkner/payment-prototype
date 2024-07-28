@@ -1,0 +1,67 @@
+<div class="payment-documents">
+    <kendo-grid
+        *ngIf="!isErrored"
+        [data]="gridView"
+        [kendoGridBinding]="gridData"
+        [sortable]="true"
+        [loading]="isLoading"
+        [columnMenu]="{ filter: true }"
+        [scrollable]="'scrollable'"
+        [height]="500"
+
+        [pageSize]="pageSize"
+        [skip]="skip"
+        [pageable]="{
+            buttonCount: buttonCount,
+            info: info,
+            type: type,
+            pageSizes: pageSizes,
+            previousNext: previousNext,
+            position: position
+        }"
+        (pageChange)="pageChange($event)"
+
+        [selectable]="{
+            checkboxOnly: true
+        }" 
+        kendoGridSelectBy="iD" 
+        [(selectedKeys)]="selectedDocumentIds" 
+        (selectionChange)="onCheckboxChange($event)"
+    >
+        <ng-template kendoGridToolbarTemplate>
+        </ng-template>
+
+        <kendo-grid-checkbox-column
+            [showSelectAll]="false"
+            [width]="36"
+            [columnMenu]="false"
+        ></kendo-grid-checkbox-column>
+
+        <kendo-grid-column
+            field="fileName"
+            title="File Name"
+            [width]="70"
+            filter="text"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="storageUrl"
+            title="File Url"
+            [width]="120"
+            filter="text"
+        ></kendo-grid-column>
+
+        <kendo-grid-messages noRecords=""> </kendo-grid-messages>
+        <ng-template kendoGridNoRecordsTemplate>
+            <ng-container *ngIf="this.isEmptyRes">
+                <div class="center">
+                    <span>
+                        <h6>
+                        <b>{{ noRecordsMessage }}</b>
+                        </h6>
+                    </span>
+                </div>
+            </ng-container>
+        </ng-template>
+    </kendo-grid>
+</div>

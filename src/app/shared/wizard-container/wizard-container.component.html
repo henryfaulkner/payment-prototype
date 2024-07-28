@@ -1,0 +1,11 @@
+<div class="wizard-container">
+    <ng-container *ngIf="showBack">
+        <button (click)="back()" (keyup.enter)="back()">Back</button>
+    </ng-container>
+
+    <ng-content></ng-content>
+
+    <ng-container *ngIf="showNext">
+        <button (click)="next()" (keyup.enter)="next()">Next</button>
+    </ng-container>
+</div>

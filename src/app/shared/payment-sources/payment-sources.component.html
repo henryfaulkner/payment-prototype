@@ -1,0 +1,14 @@
+<div class="sources">
+    <div class="col-xs-12 col-sm-6 example-col">
+        <kendo-label text="Payment Sources">
+          <br />
+          <kendo-dropdownlist 
+            textField="name"
+            valueField="value"
+            [data]="sources" 
+            [value]="selectedSource"
+            (selectionChange)="onSelectionChange($event)"
+        ></kendo-dropdownlist>
+        </kendo-label>
+      </div>
+</div>

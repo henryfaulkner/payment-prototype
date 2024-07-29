@@ -13,8 +13,9 @@ import {
   PaymentService,
 } from '../../core/services/payment.service';
 import { PaymentDocument } from '../../types/payment-document.type';
+import { PaymentDocumentBatch } from '../../types/payment-document-batch.type';
 
-const noRecordsMessageConstant = 'No records found';
+export const noRecordsMessageConstant = 'No records found';
 
 @Component({
   selector: 'app-payment-documents',
@@ -34,7 +35,9 @@ export class PaymentDocumentsComponent implements OnInit {
 
   selectedDocumentIds: number[] = [];
   @Input() selectedDocuments: PaymentDocument[] = [];
-  @Output() selectEvent = new EventEmitter<PaymentDocument[]>();
+  @Output() selectEvent = new EventEmitter<PaymentDocumentBatch>();
+
+  batchNotes = '';
 
   constructor(private pms: PaymentService, private logger: LoggerService) {}
 
@@ -72,7 +75,7 @@ export class PaymentDocumentsComponent implements OnInit {
   }
 
   /**
-   * Kendo sorting settings
+   * Kendo selecting settings
    */
 
   onCheckboxChange(event: SelectionEvent) {
@@ -83,13 +86,30 @@ export class PaymentDocumentsComponent implements OnInit {
       );
       return;
     }
+    if (!event?.deselectedRows) {
+      //this.kns.show('error', 'deselectedRows RowArgs could not be found.');
+      this.logger.error(
+        'PaymentDocumentsComponent onCheckboxChange: deselectedRows RowArgs could not be found.'
+      );
+      return;
+    }
 
-    const documents: PaymentDocument[] = event.selectedRows.map(
-      (x: RowArgs) => x.dataItem as PaymentDocument
-    );
-    console.log('selected documents,', documents);
-    this.selectedDocuments = documents;
-    this.selectEvent.emit(documents);
+    event.selectedRows.forEach((x: RowArgs) => {
+      this.selectedDocuments.push(x.dataItem as PaymentDocument);
+    });
+
+    event.deselectedRows.forEach((x: RowArgs) => {
+      const doc = x.dataItem as PaymentDocument;
+      const index = this.selectedDocuments.findIndex(x => x.iD === doc.iD);
+      if (index !== -1) {
+        this.selectedDocuments.splice(index, 1);
+      }
+    });
+
+    this.selectEvent.emit({
+      paymentDocuments: this.selectedDocuments,
+      batchNotes: this.batchNotes,
+    });
   }
 
   mapSelectedKeys(selectedDocs: PaymentDocument[]): number[] {

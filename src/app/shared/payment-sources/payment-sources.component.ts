@@ -28,7 +28,7 @@ export class PaymentSourcesComponent implements OnInit {
         }
 
         this.sources = res.data;
-        this.selectedSource = res.data[0];
+        this.selectedSource = this.sources.find(x => x.name === this.selectedSource.name) ?? res.data[0];
       })
       .catch((error: Error) => {
         console.log('getFundingHistory catch', error);

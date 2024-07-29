@@ -18,7 +18,7 @@ export class PaymentService {
     return result;
   }
 
-  private getMockIApiResponse<T>(data: T): IApiResponse<T> {
+  public getMockIApiResponse<T>(data: T): IApiResponse<T> {
     return {
       statusCode: 200,
       message: '',

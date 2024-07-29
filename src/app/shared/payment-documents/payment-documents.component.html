@@ -32,6 +32,7 @@
         </ng-template>
 
         <kendo-grid-checkbox-column
+            title="Select"
             [showSelectAll]="false"
             [width]="36"
             [columnMenu]="false"
@@ -64,4 +65,15 @@
             </ng-container>
         </ng-template>
     </kendo-grid>
+
+    <div class="notes-container">
+        <kendo-label text="Document Batch Notes">
+            <kendo-textarea
+              placeholder="Assign batch notes here... (Optional)"
+              [rows]="3"
+              resizable="vertical"
+              [(ngModel)]="batchNotes"
+            ></kendo-textarea>
+          </kendo-label>
+    </div>
 </div>

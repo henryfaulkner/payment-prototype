@@ -1,0 +1,9 @@
+.find-customer-payor {
+    display: flex;
+    flex-direction: column;
+
+    .search-container form {
+        display: flex;
+        flex-direction: row;
+    }
+}

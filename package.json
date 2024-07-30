@@ -33,6 +33,7 @@
     "@progress/kendo-angular-label": "16.5.0",
     "@progress/kendo-angular-layout": "16.5.0",
     "@progress/kendo-angular-navigation": "16.5.0",
+    "@progress/kendo-angular-notification": "^16.5.0",
     "@progress/kendo-angular-pdf-export": "16.5.0",
     "@progress/kendo-angular-popup": "16.5.0",
     "@progress/kendo-angular-progressbar": "16.5.0",

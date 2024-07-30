@@ -126,10 +126,13 @@ export class FindCustomerPayorComponent implements OnInit {
   }
 
   onCustomerCheckboxChange(event: SelectionEvent) {
-    let payor: CustomerPaymentPayorResponseEntity | null = null;
-    if (event && event.selectedRows.length > 0) {
-      payor = (event.selectedRows[0].dataItem as CustomerPaymentPayorResponseEntity);
+    if (!event || event.selectedRows.length === 0) {
+      this.selectedPayor = null;
+      this.selectPayorEvent.emit(null); 
+      return;
     }
+
+    const payor: CustomerPaymentPayorResponseEntity | null = (event.selectedRows[0].dataItem as CustomerPaymentPayorResponseEntity);
     const model = new CustomerPaymentPayorResponseEntity();
     model.payorClientId = payor.payorClientId;
     model.payorClientName = payor.payorClientName;

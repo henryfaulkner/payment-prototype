@@ -1,0 +1,82 @@
+[
+  {
+    "invoiceNumber": "34025179",
+    "approvedAmount": 564.73,
+    "balance": 852.47,
+    "purchaseDate": "2023-08-24T20:34:00.039Z",
+    "dPD": 319,
+    "storageUrl": "http://norris.info"
+  },
+  {
+    "invoiceNumber": "95765587",
+    "approvedAmount": 643.63,
+    "balance": 718.68,
+    "purchaseDate": "2024-04-01T03:07:30.330Z",
+    "dPD": 256,
+    "storageUrl": "https://brook.net"
+  },
+  {
+    "invoiceNumber": "36332806",
+    "approvedAmount": 60.97,
+    "balance": 436.5,
+    "purchaseDate": "2024-07-15T14:53:03.018Z",
+    "dPD": 271,
+    "storageUrl": "https://macie.net"
+  },
+  {
+    "invoiceNumber": "12705723",
+    "approvedAmount": 51.87,
+    "balance": 959.26,
+    "purchaseDate": "2023-10-14T05:58:59.465Z",
+    "dPD": 126,
+    "storageUrl": "http://cornell.name"
+  },
+  {
+    "invoiceNumber": "63250570",
+    "approvedAmount": 708.31,
+    "balance": 121.55,
+    "purchaseDate": "2024-01-05T11:11:20.244Z",
+    "dPD": 131,
+    "storageUrl": "http://casimir.com"
+  },
+  {
+    "invoiceNumber": "82744875",
+    "approvedAmount": 341.04,
+    "balance": 713.74,
+    "purchaseDate": "2024-01-18T14:17:10.219Z",
+    "dPD": 68,
+    "storageUrl": "https://gia.name"
+  },
+  {
+    "invoiceNumber": "40223097",
+    "approvedAmount": 444.29,
+    "balance": 618.62,
+    "purchaseDate": "2024-03-25T20:03:00.219Z",
+    "dPD": 280,
+    "storageUrl": "https://sherwood.biz"
+  },
+  {
+    "invoiceNumber": "92287337",
+    "approvedAmount": 145.83,
+    "balance": 823.29,
+    "purchaseDate": "2024-03-14T19:56:48.229Z",
+    "dPD": 267,
+    "storageUrl": "http://domenico.name"
+  },
+  {
+    "invoiceNumber": "77550627",
+    "approvedAmount": 28.89,
+    "balance": 805.09,
+    "purchaseDate": "2023-10-15T12:09:49.511Z",
+    "dPD": 240,
+    "storageUrl": "http://chanel.net"
+  },
+  {
+    "invoiceNumber": "75023602",
+    "approvedAmount": 333.14,
+    "balance": 370.65,
+    "purchaseDate": "2024-03-19T22:04:44.683Z",
+    "dPD": 159,
+    "storageUrl": "https://maximillia.info"
+  }
+]

@@ -109,10 +109,13 @@ export class FindClientPayorComponent {
   }
 
   onCheckboxChange(event: SelectionEvent) {
-    let payor: ClientPaymentPayorResponseEntity | null = null;
-    if (event && event.selectedRows.length > 0) {
-      payor = (event.selectedRows[0].dataItem as ClientPaymentPayorResponseEntity);
+    if (!event || event.selectedRows.length === 0) {
+      this.selectedPayor = null;
+      this.selectPayorEvent.emit(null);
+      return;
     }
+
+    const payor: ClientPaymentPayorResponseEntity | null = (event.selectedRows[0].dataItem as ClientPaymentPayorResponseEntity);
     const model = new ClientPaymentPayorResponseEntity();
     model.payorClientId = payor.payorClientId;
     model.payorClientName = payor.payorClientName;

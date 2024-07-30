@@ -1,3 +1,5 @@
+import { Payment } from "./payment.type";
+
 export type PaymentDetails = {
     customerName: string;
     customerFullAddress: string;
@@ -5,16 +7,15 @@ export type PaymentDetails = {
     clientName: string;
     clientFullAddress: string;
 
+    paymentMethodId: number;
     checkNumber: string;
-    nPTF: string;
     checkDate: Date;
     checkAmount: number;
     payor: string;
     payerRefId: number;
 
-    runningTotal: number;
-    checkRunningDelta: number;
-
     bankNumber: string;
     bankBranch: string;
+
+    payment: Payment | null;
 };

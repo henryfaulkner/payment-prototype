@@ -1,0 +1,14 @@
+.header {
+    height: 10%;
+    width: 100%;
+    margin: 20px 10px;
+
+    .nav {
+        display: flex;
+
+        .nav-link {
+            cursor: pointer;
+            margin-left: 20px;
+        }
+    }
+}

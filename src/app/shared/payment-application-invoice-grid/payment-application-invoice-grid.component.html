@@ -1,0 +1,76 @@
+<div class="payment-application-invoice-grid">
+    <kendo-grid
+        *ngIf="!isErrored"
+        [data]="gridView"
+        [kendoGridBinding]="gridData"
+        [sortable]="true"
+        [loading]="isLoading"
+        [columnMenu]="{ filter: true }"
+        [scrollable]="'scrollable'"
+        [height]="500"
+
+        [pageSize]="pageSize"
+        [skip]="skip"
+        [pageable]="{
+            buttonCount: buttonCount,
+            info: info,
+            type: type,
+            pageSizes: pageSizes,
+            previousNext: previousNext,
+            position: position
+        }"
+        (pageChange)="pageChange($event)"
+    >
+        <ng-template kendoGridToolbarTemplate>
+        </ng-template>
+
+        <kendo-grid-column
+            field="invoiceNumber"
+            title="Invoice #"
+            [width]="60"
+            filter="text"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="approvedAmount"
+            title="Approved Amount"
+            [width]="60"
+            filter="numeric"
+            format="c2"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="balance"
+            title="Balance"
+            [width]="60"
+            filter="numeric"
+            format="c2"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="purchaseDate"
+            title="Purchase Date"
+            [width]="80"
+            filter="date"
+            format="MM/dd/yyyy"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="dPD"
+            title="DPD"
+            [width]="40"
+            filter="numeric"
+            format="## Days"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="storageUrl"
+            title="Invoice Url"
+            [width]="80"
+        >
+            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <a [href]="dataItem.storageUrl">Invoice Url Link</a>
+            </ng-template>
+        </kendo-grid-column>
+    </kendo-grid>
+</div>

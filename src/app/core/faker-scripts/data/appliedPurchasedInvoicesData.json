@@ -1,0 +1,82 @@
+[
+  {
+    "invoiceNumber": "24181734",
+    "approvedAmount": 333.16,
+    "balance": 556.21,
+    "purchaseDate": "2023-10-01T11:28:11.524Z",
+    "dPD": 318,
+    "storageUrl": "https://emily.name"
+  },
+  {
+    "invoiceNumber": "17021127",
+    "approvedAmount": 462.67,
+    "balance": 294.66,
+    "purchaseDate": "2024-06-14T15:07:58.936Z",
+    "dPD": 39,
+    "storageUrl": "http://armando.info"
+  },
+  {
+    "invoiceNumber": "08094362",
+    "approvedAmount": 104.11,
+    "balance": 366.21,
+    "purchaseDate": "2023-10-30T07:42:50.075Z",
+    "dPD": 296,
+    "storageUrl": "http://noemy.name"
+  },
+  {
+    "invoiceNumber": "02474161",
+    "approvedAmount": 140.33,
+    "balance": 105.99,
+    "purchaseDate": "2023-08-31T20:10:31.249Z",
+    "dPD": 77,
+    "storageUrl": "https://reuben.name"
+  },
+  {
+    "invoiceNumber": "97155152",
+    "approvedAmount": 279.78,
+    "balance": 476.05,
+    "purchaseDate": "2023-08-11T01:21:40.367Z",
+    "dPD": 177,
+    "storageUrl": "http://fanny.net"
+  },
+  {
+    "invoiceNumber": "66680569",
+    "approvedAmount": 155.23,
+    "balance": 40.26,
+    "purchaseDate": "2024-06-29T21:59:07.780Z",
+    "dPD": 206,
+    "storageUrl": "https://sven.org"
+  },
+  {
+    "invoiceNumber": "85670853",
+    "approvedAmount": 829.59,
+    "balance": 779.7,
+    "purchaseDate": "2024-05-18T20:23:30.134Z",
+    "dPD": 301,
+    "storageUrl": "https://susanna.com"
+  },
+  {
+    "invoiceNumber": "42467549",
+    "approvedAmount": 56.62,
+    "balance": 231.72,
+    "purchaseDate": "2023-12-23T05:54:52.602Z",
+    "dPD": 360,
+    "storageUrl": "https://claudie.info"
+  },
+  {
+    "invoiceNumber": "93632079",
+    "approvedAmount": 578.25,
+    "balance": 131.2,
+    "purchaseDate": "2024-02-06T16:16:58.067Z",
+    "dPD": 141,
+    "storageUrl": "https://judy.net"
+  },
+  {
+    "invoiceNumber": "93121124",
+    "approvedAmount": 219.59,
+    "balance": 962.74,
+    "purchaseDate": "2024-06-17T12:54:48.196Z",
+    "dPD": 226,
+    "storageUrl": "https://alice.net"
+  }
+]

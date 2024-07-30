@@ -37,6 +37,66 @@
 
   <div class="find-container">
     <kendo-splitter>
+      <kendo-splitter-pane>
+        <kendo-grid
+          *ngIf="!isErrored"
+          [data]="clientGridView"
+          [kendoGridBinding]="clientGridData"
+          [sortable]="true"
+          [loading]="isLoading"
+          [columnMenu]="{ filter: true }"
+          [scrollable]="'scrollable'"
+          [height]="height"
+
+          [pageSize]="pageSize"
+          [skip]="clientSkip"
+          [pageable]="{
+            buttonCount: buttonCount,
+            info: info,
+            type: type,
+            pageSizes: pageSizes,
+            previousNext: previousNext,
+            position: position
+          }"
+          (pageChange)="clientPageChange($event)"
+
+          [selectable]="{
+            checkboxOnly: false,
+            mode: 'multiple'
+          }"
+          kendoGridSelectBy="payorClientId"
+          [(selectedKeys)]="clientSelectedIds"
+          (selectionChange)="onClientCheckboxChange($event)"
+        >
+          <kendo-grid-checkbox-column
+            title="Select"
+            [showSelectAll]="false"
+            [width]="20"
+            [columnMenu]="false"
+          ></kendo-grid-checkbox-column>
+
+          <kendo-grid-column
+            field="payorClientName"
+            title="Client"
+            [width]="120"
+            filter="text"
+          ></kendo-grid-column>
+
+          <kendo-grid-messages noRecords=""> </kendo-grid-messages>
+          <ng-template kendoGridNoRecordsTemplate>
+              <ng-container *ngIf="this.isEmptyRes">
+                  <div class="center">
+                      <span>
+                          <h6>
+                          <b>{{ noRecordsMessage }}</b>
+                          </h6>
+                      </span>
+                  </div>
+              </ng-container>
+          </ng-template>
+        </kendo-grid>
+      </kendo-splitter-pane>
+      
         <kendo-splitter-pane>
           <kendo-grid
             *ngIf="!isErrored"
@@ -85,66 +145,6 @@
             <kendo-grid-messages noRecords=""> </kendo-grid-messages>
             <ng-template kendoGridNoRecordsTemplate>
                 <ng-container *ngIf="this.isEmptyRes || this.customerGridData.length === 0">
-                    <div class="center">
-                        <span>
-                            <h6>
-                            <b>{{ noRecordsMessage }}</b>
-                            </h6>
-                        </span>
-                    </div>
-                </ng-container>
-            </ng-template>
-          </kendo-grid>
-        </kendo-splitter-pane>
-
-        <kendo-splitter-pane>
-          <kendo-grid
-            *ngIf="!isErrored"
-            [data]="clientGridView"
-            [kendoGridBinding]="clientGridData"
-            [sortable]="true"
-            [loading]="isLoading"
-            [columnMenu]="{ filter: true }"
-            [scrollable]="'scrollable'"
-            [height]="height"
-
-            [pageSize]="pageSize"
-            [skip]="clientSkip"
-            [pageable]="{
-              buttonCount: buttonCount,
-              info: info,
-              type: type,
-              pageSizes: pageSizes,
-              previousNext: previousNext,
-              position: position
-            }"
-            (pageChange)="clientPageChange($event)"
-
-            [selectable]="{
-              checkboxOnly: false,
-              mode: 'multiple'
-            }"
-            kendoGridSelectBy="payorClientId"
-            [(selectedKeys)]="clientSelectedIds"
-            (selectionChange)="onClientCheckboxChange($event)"
-          >
-            <kendo-grid-checkbox-column
-              title="Select"
-              [showSelectAll]="false"
-              [width]="20"
-              [columnMenu]="false"
-            ></kendo-grid-checkbox-column>
-
-            <kendo-grid-column
-              field="payorClientName"
-              title="Client"
-              [width]="120"
-              filter="text"
-            ></kendo-grid-column>
-
-            <kendo-grid-messages noRecords=""> </kendo-grid-messages>
-            <ng-template kendoGridNoRecordsTemplate>
-                <ng-container *ngIf="this.isEmptyRes">
                     <div class="center">
                         <span>
                             <h6>

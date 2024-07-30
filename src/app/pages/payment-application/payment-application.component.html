@@ -1,0 +1,39 @@
+<div class="payment-application">
+    <kendo-splitter orientation="vertical">
+        <kendo-splitter-pane>
+            <app-payment-details 
+                [model]="paymentDetails"
+                [canCreate]="false"
+            ></app-payment-details>
+        </kendo-splitter-pane>
+        <kendo-splitter-pane>
+
+            <kendo-tabstrip>
+                <kendo-tabstrip-tab title="Available Invoices" [selected]="true">
+                    <ng-template kendoTabContent>
+                        <app-payment-application-invoice-grid
+                            [gridData]="availableInvoices"
+                        ></app-payment-application-invoice-grid>
+                    </ng-template>
+                </kendo-tabstrip-tab>
+                
+                <kendo-tabstrip-tab title="Applied Documents">
+                    <ng-template kendoTabContent>
+                        <app-payment-documents
+                            [paymentId]="paymentId"
+                        ></app-payment-documents>
+                    </ng-template>
+                </kendo-tabstrip-tab>
+
+                <kendo-tabstrip-tab title="Applied Invoices">
+                    <ng-template kendoTabContent>
+                        <app-payment-application-invoice-grid
+                            [gridData]="appliedInvoices"
+                        ></app-payment-application-invoice-grid>
+                    </ng-template>
+                </kendo-tabstrip-tab>
+            </kendo-tabstrip>
+
+        </kendo-splitter-pane>
+    </kendo-splitter>
+</div>

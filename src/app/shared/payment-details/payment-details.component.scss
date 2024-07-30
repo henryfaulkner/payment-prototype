@@ -1,0 +1,39 @@
+.payment-details {
+    .client-details {
+        grid-area: client;
+        background-color: blue;
+    }
+
+    .customer-details {
+        grid-area: customer;
+        background-color: red;
+    }
+
+    .check-details {
+        display: flex;
+
+        grid-area: check;
+        background-color: orange;
+    }
+
+    .bank-details {
+        grid-area: bank;
+        background-color: green;
+    }
+
+    .payment-details-grid {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto;
+
+        grid-template-areas: 
+            "client customer"
+            "client customer"
+            "check check"
+            "bank bank";
+    }
+
+    .payment-details-grid-item {
+        min-height: 100px;
+    }
+}

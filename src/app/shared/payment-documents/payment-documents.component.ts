@@ -14,6 +14,7 @@ import {
 } from '../../core/services/payment.service';
 import { PaymentDocument } from '../../types/payment-document.type';
 import { PaymentDocumentBatch } from '../../types/payment-document-batch.type';
+import { KendoNotificationService } from '../../core/services/kendo-notification-service.service';
 
 export const noRecordsMessageConstant = 'No records found';
 
@@ -23,6 +24,8 @@ export const noRecordsMessageConstant = 'No records found';
   styleUrl: './payment-documents.component.scss',
 })
 export class PaymentDocumentsComponent implements OnInit {
+  @Input() paymentId: number | null = null;
+
   gridData: PaymentDocument[] = [];
   gridView: GridDataResult = {
     data: [],
@@ -39,11 +42,14 @@ export class PaymentDocumentsComponent implements OnInit {
 
   batchNotes = '';
 
-  constructor(private pms: PaymentService, private logger: LoggerService) {}
+  constructor(private pms: PaymentService, 
+    private logger: LoggerService,
+    private kns: KendoNotificationService,  
+  ) { }
 
   ngOnInit(): void {
     this.pms
-      .getPaymentDocuments()
+      .getPaymentDocuments(null)
       .then((res: IApiResponse<PaymentDocument[]>) => {
         if (!res.isSuccessful) {
           throw new Error(res.message, res.exception);
@@ -80,14 +86,14 @@ export class PaymentDocumentsComponent implements OnInit {
 
   onCheckboxChange(event: SelectionEvent) {
     if (!event?.selectedRows) {
-      //this.kns.show('error', 'selectedRows RowArgs could not be found.');
+      this.kns.show('error', 'selectedRows RowArgs could not be found.');
       this.logger.error(
         'PaymentDocumentsComponent onCheckboxChange: selectedRows RowArgs could not be found.'
       );
       return;
     }
     if (!event?.deselectedRows) {
-      //this.kns.show('error', 'deselectedRows RowArgs could not be found.');
+      this.kns.show('error', 'deselectedRows RowArgs could not be found.');
       this.logger.error(
         'PaymentDocumentsComponent onCheckboxChange: deselectedRows RowArgs could not be found.'
       );

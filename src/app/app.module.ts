@@ -17,6 +17,13 @@ import { PaymentDetailsComponent } from './shared/payment-details/payment-detail
 import { FindAtradiusPayorComponent } from './shared/find-payor/find-atradius-payor/find-atradius-payor.component';
 import { FindCustomerPayorComponent } from './shared/find-payor/find-customer-payor/find-customer-payor.component';
 import { FindClientPayorComponent } from './shared/find-payor/find-client-payor/find-client-payor.component';
+import { PaymentCreationComponent } from './pages/payment-creation/payment-creation.component';
+import { PaymentApplicationComponent } from './pages/payment-application/payment-application.component';
+import { PaymentDocumentUploadComponent } from './pages/payment-document-upload/payment-document-upload.component';
+import { NotificationService } from '@progress/kendo-angular-notification';
+import { ReleasedPaymentsComponent } from './pages/released-payments/released-payments.component';
+import { UnreleasedPaymentsComponent } from './pages/unreleased-payments/unreleased-payments.component';
+import { PaymentApplicationInvoiceGridComponent } from './shared/payment-application-invoice-grid/payment-application-invoice-grid.component';
 
 const components = [
   AppComponent,
@@ -27,6 +34,9 @@ const components = [
   FindAtradiusPayorComponent, 
   FindCustomerPayorComponent, 
   FindClientPayorComponent,
+  PaymentCreationComponent, 
+  PaymentApplicationComponent, 
+  PaymentDocumentUploadComponent,
 ];
 
 const modules = [
@@ -43,9 +53,9 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, ReleasedPaymentsComponent, UnreleasedPaymentsComponent, PaymentApplicationInvoiceGridComponent],
   imports: [...modules],
-  providers: [...components, ...modules],
+  providers: [...components, ...modules, NotificationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,1 +1,92 @@
-<p>payment-details works!</p>
+<div class="payment-details">
+    <div class="payment-details-grid">
+        <div class="client-details payment-details-grid-item">
+            <kendo-label text="Client">
+                <kendo-textbox
+                    placeholder="Assign client's name here..."
+                    [(ngModel)]="model.clientName"
+                ></kendo-textbox>
+            </kendo-label>
+
+            <kendo-label text="Client Address">
+                <kendo-textarea
+                  placeholder="Assign client's address here... (Optional)"
+                  [rows]="3"
+                  resizable="vertical"
+                  [(ngModel)]="model.clientFullAddress"
+                ></kendo-textarea>
+            </kendo-label>
+        </div>
+
+        <div class="customer-details payment-details-grid-item">
+            <kendo-label text="Customer">
+                <kendo-textbox
+                    placeholder="Assign customer's name here..."
+                    [(ngModel)]="model.customerName"
+                ></kendo-textbox>
+            </kendo-label>
+
+            <kendo-label text="Customer Address">
+                <kendo-textarea
+                  placeholder="Assign customer's address here... (Optional)"
+                  [rows]="3"
+                  resizable="vertical"
+                  [(ngModel)]="model.customerFullAddress"
+                ></kendo-textarea>
+            </kendo-label>
+        </div>
+
+        <div class="check-details payment-details-grid-item">
+            <div class="column">
+                <kendo-label text="Check #">
+                    <kendo-textbox
+                        placeholder="Assign check number here..."
+                        [(ngModel)]="model.checkNumber"
+                    ></kendo-textbox>
+                </kendo-label>
+
+                <kendo-label text="Check Amount">
+                    <kendo-textbox
+                        placeholder="Assign check amount here..."
+                        [(ngModel)]="model.checkAmount"
+                    ></kendo-textbox>
+                </kendo-label>
+            </div>
+            
+            <div class="column">
+                <kendo-label text="Check Date">
+                    <kendo-textbox
+                        placeholder="Assign check date here..."
+                        [(ngModel)]="model.checkDate"
+                    ></kendo-textbox>
+                </kendo-label>
+
+                <kendo-label text="NPTF">
+                    <kendo-dropdownlist
+                        placeholder="Assign ¿NPTF? here..."
+                    ></kendo-dropdownlist>
+                </kendo-label>
+            </div>
+        </div>
+
+        <div class="bank-details payment-details-grid-item">
+            <kendo-label text="Bank Number">
+                <kendo-textbox
+                    placeholder="Assign bank number here..."
+                    [(ngModel)]="model.bankNumber"
+                ></kendo-textbox>
+            </kendo-label>
+
+            <kendo-label text="Bank Branch">
+                <kendo-textbox
+                    placeholder="Assign bank branch here..."
+                    [(ngModel)]="model.bankBranch"
+                ></kendo-textbox>
+            </kendo-label>
+        </div>
+    </div>
+
+    <ng-container *ngIf="canCreate">
+        <button (click)="create()" (keyup.enter)="create()">Create Payment</button>
+    </ng-container>
+</div>

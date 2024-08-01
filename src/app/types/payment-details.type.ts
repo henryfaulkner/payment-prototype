@@ -1,10 +1,10 @@
 import { Payment } from "./payment.type";
 
 export type PaymentDetails = {
-    customerName: string;
+    customerName: string | null;
     customerFullAddress: string;
 
-    clientName: string;
+    clientName: string | null;
     clientFullAddress: string;
 
     paymentMethodId: number;

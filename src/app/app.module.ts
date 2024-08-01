@@ -24,6 +24,7 @@ import { NotificationService } from '@progress/kendo-angular-notification';
 import { ReleasedPaymentsComponent } from './pages/released-payments/released-payments.component';
 import { UnreleasedPaymentsComponent } from './pages/unreleased-payments/unreleased-payments.component';
 import { PaymentApplicationInvoiceGridComponent } from './shared/payment-application-invoice-grid/payment-application-invoice-grid.component';
+import { PaymentsGridComponent } from './shared/payments-grid/payments-grid.component';
 
 const components = [
   AppComponent,
@@ -53,7 +54,7 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [...components, ReleasedPaymentsComponent, UnreleasedPaymentsComponent, PaymentApplicationInvoiceGridComponent],
+  declarations: [...components, ReleasedPaymentsComponent, UnreleasedPaymentsComponent, PaymentApplicationInvoiceGridComponent, PaymentsGridComponent],
   imports: [...modules],
   providers: [...components, ...modules, NotificationService],
   bootstrap: [AppComponent],

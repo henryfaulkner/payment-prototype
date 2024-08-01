@@ -1,7 +1,8 @@
 .header {
     height: 10%;
     width: 100%;
-    margin: 20px 10px;
+    padding: 20px 10px;
+    background-color: lightblue;
 
     .nav {
         display: flex;
@@ -11,4 +12,8 @@
             margin-left: 20px;
         }
     }
+}
+
+.main-container {
+    margin: 12px 0;
 }

@@ -45,11 +45,11 @@ export class PaymentApplicationComponent implements OnInit {
       })
       .catch((error: Error) => {
         console.error(
-          'PaymentApplicationComponent ngOnInit getPaymentDetails error.',
+          'PaymentApplicationComponent loadPaymentDetails getPaymentDetails error.',
           error
         );
         this.logger.error(
-          'PaymentApplicationComponent ngOnInit getPaymentDetails error.',
+          'PaymentApplicationComponent loadPaymentDetails getPaymentDetails error.',
           error
         );
         this.kns.show('error', 'Something went wrong while retrieving the payment details.');
@@ -66,14 +66,14 @@ export class PaymentApplicationComponent implements OnInit {
       })
       .catch((error: Error) => {
         console.error(
-          'PaymentApplicationComponent ngOnInit getPaymentDetails error.',
+          'PaymentApplicationComponent loadAvailableInvoices getAvailableInvoices error.',
           error
         );
         this.logger.error(
-          'PaymentApplicationComponent ngOnInit getPaymentDetails error.',
+          'PaymentApplicationComponent loadAvailableInvoices getAvailableInvoices error.',
           error
         );
-        this.kns.show('error', 'Something went wrong while retrieving the payment details.');
+        this.kns.show('error', 'Something went wrong while retrieving the available invoices.');
       });
   }
 
@@ -87,14 +87,14 @@ export class PaymentApplicationComponent implements OnInit {
       })
       .catch((error: Error) => {
         console.error(
-          'PaymentApplicationComponent ngOnInit getPaymentDetails error.',
+          'PaymentApplicationComponent loadAppliedInvoices getAppliedInvoices error.',
           error
         );
         this.logger.error(
-          'PaymentApplicationComponent ngOnInit getPaymentDetails error.',
+          'PaymentApplicationComponent loadAppliedInvoices getAppliedInvoices error.',
           error
         );
-        this.kns.show('error', 'Something went wrong while retrieving the payment details.');
+        this.kns.show('error', 'Something went wrong while retrieving the applied invoices.');
       });
   }
 }

@@ -1,15 +1,19 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { PurchasedInvoice } from '../../types/purchased-invoice.type';
-import { noRecordsMessageConstant } from '../payment-documents/payment-documents.component';
+import { Payment } from '../../types/payment.type';
 import { GridDataResult, PageChangeEvent, PagerPosition, PagerType } from '@progress/kendo-angular-grid';
+import { noRecordsMessageConstant } from '../payment-documents/payment-documents.component';
+import { PaymentDetails } from '../../types/payment-details.type';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-payment-application-invoice-grid',
-  templateUrl: './payment-application-invoice-grid.component.html',
-  styleUrl: './payment-application-invoice-grid.component.scss'
+  selector: 'app-payments-grid',
+  templateUrl: './payments-grid.component.html',
+  styleUrl: './payments-grid.component.scss'
 })
-export class PaymentApplicationInvoiceGridComponent implements OnInit, OnChanges {
-  @Input() gridData: PurchasedInvoice[];
+export class PaymentsGridComponent implements OnInit, OnChanges {
+  @Input() canEdit: boolean = false;
+
+  @Input() gridData: PaymentDetails[];
   gridView: GridDataResult = {
     data: [],
     total: 0,
@@ -18,6 +22,8 @@ export class PaymentApplicationInvoiceGridComponent implements OnInit, OnChanges
   isErrored = false;
   isEmptyRes = false;
   noRecordsMessage = noRecordsMessageConstant;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void { }
 
@@ -28,6 +34,12 @@ export class PaymentApplicationInvoiceGridComponent implements OnInit, OnChanges
       this.isEmptyRes = this.gridData.length === 0; 
       this.loadGridView();
     }
+  }
+
+  navigateToPaymentApplication(paymentId: number) {
+    this.router.navigate(["/payment-application"], {
+      queryParams: { paymentId: paymentId },
+    });
   }
 
   /**

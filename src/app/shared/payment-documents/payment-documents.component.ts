@@ -104,7 +104,7 @@ export class PaymentDocumentsComponent implements OnInit {
 
     event.deselectedRows.forEach((x: RowArgs) => {
       const doc = x.dataItem as PaymentDocument;
-      const index = this.selectedDocuments.findIndex(x => x.id === doc.id);
+      const index = this.selectedDocuments.findIndex(x => x.iD === doc.iD);
       if (index !== -1) {
         this.selectedDocuments.splice(index, 1);
       }
@@ -116,7 +116,7 @@ export class PaymentDocumentsComponent implements OnInit {
   }
 
   mapSelectedKeys(selectedDocs: PaymentDocument[]): number[] {
-    return selectedDocs.map((x) => x.id);
+    return selectedDocs.map((x) => x.iD);
   }
 
   /**

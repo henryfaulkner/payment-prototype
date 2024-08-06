@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { IApiResponse, PaymentService } from './payment.service';
-import { AtradiusPaymentPayorResponseEntity, AtradiusPaymnetPayorPayload, ClientPaymentPayorPayload, ClientPaymentPayorResponseEntity, CustomerPaymentPayorPayload, CustomerPaymentPayorResponseEntity } from '../../types/payment-find-payor.type';
+import { AtradiusPaymentPayorResponseEntity, AtradiusPaymnetPayorPayload, ClientCustomerSearchWidgetResponse, ClientNameSearchTerms, CustomerNameSearchTerms, InvoiceNumberSearchTerms, InvoiceNumberSearchWidgetResponse } from '../../types/payment-find-payor.type';
+import { ResourceLoader } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentFindPayorService {
-  private clientSearchResults: ClientPaymentPayorResponseEntity[] = [];
-  private customerSearchResults: CustomerPaymentPayorResponseEntity[] = [];
+  private clientSearchResults: ClientCustomerSearchWidgetResponse[] = [];
+  private customerSearchResults: ClientCustomerSearchWidgetResponse[] = [];
 
   constructor(private pms: PaymentService) { }
 
   async getAtradiusPayorEntity(
-    searchPayload: AtradiusPaymnetPayorPayload,
+    searchTerms: AtradiusPaymnetPayorPayload,
   ): Promise<IApiResponse<AtradiusPaymentPayorResponseEntity>> {
     const entity =new AtradiusPaymentPayorResponseEntity();
     entity.payorClientId = 90210;
@@ -22,136 +23,98 @@ export class PaymentFindPayorService {
     );
   }
 
-  async getClientPayorEntities(
-    searchPayload: ClientPaymentPayorPayload,
-  ): Promise<IApiResponse<ClientPaymentPayorResponseEntity[]>> {
+  async doClientNameSearch(
+    searchTerms: ClientNameSearchTerms,
+  ): Promise<IApiResponse<ClientCustomerSearchWidgetResponse[]>> {
     // use search payload for filtering on API side
-    let result = this.getMockClientPayorEntities(searchPayload);
+    let result = this.getMockCustomerPayorEntities(searchTerms);
     this.clientSearchResults = result;
     return this.pms.getMockIApiResponse(
       result
     )
   }
 
-  async getCustomerPayorEntities(
-    searchPayload: CustomerPaymentPayorPayload,
-  ): Promise<IApiResponse<CustomerPaymentPayorResponseEntity[]>> {
-    let result = this.getMockCustomerPayorEntities(searchPayload);
+  async doCustomerNameSearch(
+    searchTerms: CustomerNameSearchTerms,
+  ): Promise<IApiResponse<ClientCustomerSearchWidgetResponse[]>> {
+    let result = this.getMockCustomerPayorEntities(searchTerms);
     this.customerSearchResults = result;
     return this.pms.getMockIApiResponse(result);
   }
+
+  async doInvoiceNumberSearch(
+    searchTerms: InvoiceNumberSearchTerms,
+  ): Promise<IApiResponse<InvoiceNumberSearchWidgetResponse[]>> {
+    const response = await this.pms.getMockIApiResponse([]);
+    return response;
+  }
   
-  filterCustomerSearchResults(clientIds: number[]): CustomerPaymentPayorResponseEntity[] {
+  filterCustomerSearchResults(clientIds: number[]): ClientCustomerSearchWidgetResponse[] {
     if (clientIds.length === 0) return this.customerSearchResults;
-    return this.customerSearchResults.filter(x => clientIds.includes(x.payorClientId));
+    return this.customerSearchResults.filter(x => clientIds.includes(x.clientId));
   }  
 
-  private getMockClientPayorEntities(searchPayload: ClientPaymentPayorPayload): ClientPaymentPayorResponseEntity[] {
+  private getMockCustomerPayorEntities(searchTerms: ClientNameSearchTerms | CustomerNameSearchTerms): ClientCustomerSearchWidgetResponse[] {
     return [
       {
-        "payorClientId": 45407,
-        "payorClientName": "Lowe - Schmidt"
+        "clientId": 45407,
+        "clientName": "Lowe - Schmidt",
+        "clientCustomerId": 41055,
+        "clientCustomerName": "Corey Romaguera"
       },
       {
-        "payorClientId": 42344,
-        "payorClientName": "Gaylord, Hayes and Schmitt"
+        "clientId": 42344,
+        "clientName": "Gaylord, Hayes and Schmitt",
+        "clientCustomerId": 44134,
+        "clientCustomerName": "Miss Wendy Goodwin"
       },
       {
-        "payorClientId": 62790,
-        "payorClientName": "Marks - Armstrong"
+        "clientId": 62790,
+        "clientName": "Marks - Armstrong",
+        "clientCustomerId": 78171,
+        "clientCustomerName": "Oliver Parisian"
       },
       {
-        "payorClientId": 31469,
-        "payorClientName": "Rempel - Altenwerth"
+        "clientId": 31469,
+        "clientName": "Rempel - Altenwerth",
+        "clientCustomerId": 54799,
+        "clientCustomerName": "Natalie Bartell"
       },
       {
-        "payorClientId": 19941,
-        "payorClientName": "Ryan Inc"
+        "clientId": 19941,
+        "clientName": "Ryan Inc",
+        "clientCustomerId": 54796,
+        "clientCustomerName": "Adam Bode"
       },
       {
-        "payorClientId": 14706,
-        "payorClientName": "Nitzsche - Yundt"
+        "clientId": 14706,
+        "clientName": "Nitzsche - Yundt",
+        "clientCustomerId": 4019,
+        "clientCustomerName": "Ginger Powlowski"
       },
       {
-        "payorClientId": 66750,
-        "payorClientName": "Runolfsdottir - Herman"
+        "clientId": 66750,
+        "clientName": "Runolfsdottir - Herman",
+        "clientCustomerId": 69594,
+        "clientCustomerName": "Orville Dare"
       },
       {
-        "payorClientId": 66102,
-        "payorClientName": "Roob LLC"
+        "clientId": 66102,
+        "clientName": "Roob LLC",
+        "clientCustomerId": 58676,
+        "clientCustomerName": "Toni Lubowitz"
       },
       {
-        "payorClientId": 95154,
-        "payorClientName": "Herzog - Lesch"
+        "clientId": 95154,
+        "clientName": "Herzog - Lesch",
+        "clientCustomerId": 88324,
+        "clientCustomerName": "Emily Muller"
       },
       {
-        "payorClientId": 52944,
-        "payorClientName": "Wilkinson, Metz and Farrell"
-      }
-    ];
-  };
-
-  private getMockCustomerPayorEntities(searchPayload: CustomerPaymentPayorPayload): CustomerPaymentPayorResponseEntity[] {
-    return [
-      {
-        "payorClientId": 45407,
-        "payorClientName": "Lowe - Schmidt",
-        "payorClientCustomerId": 41055,
-        "payorClientCustomerName": "Corey Romaguera"
-      },
-      {
-        "payorClientId": 42344,
-        "payorClientName": "Gaylord, Hayes and Schmitt",
-        "payorClientCustomerId": 44134,
-        "payorClientCustomerName": "Miss Wendy Goodwin"
-      },
-      {
-        "payorClientId": 62790,
-        "payorClientName": "Marks - Armstrong",
-        "payorClientCustomerId": 78171,
-        "payorClientCustomerName": "Oliver Parisian"
-      },
-      {
-        "payorClientId": 31469,
-        "payorClientName": "Rempel - Altenwerth",
-        "payorClientCustomerId": 54799,
-        "payorClientCustomerName": "Natalie Bartell"
-      },
-      {
-        "payorClientId": 19941,
-        "payorClientName": "Ryan Inc",
-        "payorClientCustomerId": 54796,
-        "payorClientCustomerName": "Adam Bode"
-      },
-      {
-        "payorClientId": 14706,
-        "payorClientName": "Nitzsche - Yundt",
-        "payorClientCustomerId": 4019,
-        "payorClientCustomerName": "Ginger Powlowski"
-      },
-      {
-        "payorClientId": 66750,
-        "payorClientName": "Runolfsdottir - Herman",
-        "payorClientCustomerId": 69594,
-        "payorClientCustomerName": "Orville Dare"
-      },
-      {
-        "payorClientId": 66102,
-        "payorClientName": "Roob LLC",
-        "payorClientCustomerId": 58676,
-        "payorClientCustomerName": "Toni Lubowitz"
-      },
-      {
-        "payorClientId": 95154,
-        "payorClientName": "Herzog - Lesch",
-        "payorClientCustomerId": 88324,
-        "payorClientCustomerName": "Emily Muller"
-      },
-      {
-        "payorClientId": 52944,
-        "payorClientName": "Wilkinson, Metz and Farrell",
-        "payorClientCustomerId": 80359,
-        "payorClientCustomerName": "Jeannie Stroman"
+        "clientId": 52944,
+        "clientName": "Wilkinson, Metz and Farrell",
+        "clientCustomerId": 80359,
+        "clientCustomerName": "Jeannie Stroman"
       }
     ];
   }

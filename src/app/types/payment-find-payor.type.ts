@@ -1,11 +1,16 @@
-export type CustomerPaymentPayorPayload = {
-    // payor terms
-    findInvoiceNumber: string;
-    findClientName: string;
+export type CustomerNameSearchTerms = {
     findCustomerName: string;
 };
 
-export class CustomerPaymentPayorResponseEntity {
+export type ClientNameSearchTerms = {
+    findClientName: string;
+};
+
+export type InvoiceNumberSearchTerms = {
+    findInvoiceNumber: string;
+};
+
+export class CustomerPaymentPayor {
     // selected items
     payorClientId: number;
     payorClientName: string;
@@ -13,14 +18,32 @@ export class CustomerPaymentPayorResponseEntity {
     payorClientCustomerName: string;
 };
 
-export type ClientPaymentPayorPayload = {
-    findInvoiceNumber: string;
-    findClientName: string;
-};
-
-export class ClientPaymentPayorResponseEntity {
+export class ClientPaymentPayor {
     payorClientId: number;
     payorClientName: string;
+};
+
+export class ClientCustomerSearchWidgetResponse {
+    // selected items
+    clientId: number;
+    clientName: string;
+    clientCustomerId: number;
+    clientCustomerName: string;
+};
+
+export type InvoiceNumberSearchWidgetResponse = {
+    invoiceNumber: string;
+    clientId: number;
+    clientName: string;
+    customerId: number;
+    customerName: string;
+    invoiceAmount: number;
+    balance: number;
+    reserveAmount: number;
+    chargeAmount: number;
+    approvedAmount: number;
+    dPD: number;
+    purchaseDate: Date;
 };
 
 // Atradius will skip step

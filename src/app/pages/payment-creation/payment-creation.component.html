@@ -42,30 +42,24 @@
 
         <ng-container *ngIf="currentStep === stepIndexes.FindPayor">
             <ng-container *ngIf="paymentSource.value === paymentSources.Customer">
-            <app-find-customer-payor
-                [searchTerms]="paymentPayorCustomerSearchTerms"
-                (searchEvent)="paymentPayorCustomerSearch($event)"
-                [selectedPayor]="paymentPayorCustomer"
-                (selectPayorEvent)="applyPaymentPayor($event)"
-            ></app-find-customer-payor>
+                <app-find-customer-payor
+                    (selectPayorEvent)="applyPaymentPayor($event)"
+                ></app-find-customer-payor>
             </ng-container>
 
             <ng-container *ngIf="paymentSource.value === paymentSources.Client">
-            <app-find-client-payor
-                [searchTerms]="paymentPayorClientSearchTerms"
-                (searchEvent)="paymentPayorClientSearch($event)"
-                [selectedPayor]="paymentPayorClient"
-                (selectPayorEvent)="applyPaymentPayor($event)"
-            ></app-find-client-payor>
+                <app-find-client-payor
+                    (selectPayorEvent)="applyPaymentPayor($event)"
+                ></app-find-client-payor>
             </ng-container>
 
             <ng-container *ngIf="paymentSource.value === paymentSources.Atradius">
-            <app-find-atradius-payor
-                [selectedPayor]="paymentPayorAtradius"
-                [originNavEvent]="lastNavEvent"
-                (selectPayorEvent)="applyPaymentPayor($event)"
-                (stepBackEvent)="stepBack()"
-            ></app-find-atradius-payor>
+                <app-find-atradius-payor
+                    [selectedPayor]="paymentPayorAtradius"
+                    [originNavEvent]="lastNavEvent"
+                    (selectPayorEvent)="applyPaymentPayor($event)"
+                    (stepBackEvent)="stepBack()"
+                ></app-find-atradius-payor>
             </ng-container>
         </ng-container>
 

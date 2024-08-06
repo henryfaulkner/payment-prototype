@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AtradiusPaymentPayorResponseEntity, ClientPaymentPayorPayload, ClientPaymentPayorResponseEntity, CustomerPaymentPayorPayload, CustomerPaymentPayorResponseEntity } from '../../types/payment-find-payor.type';
+import { AtradiusPaymentPayorResponseEntity, CustomerNameSearchTerms, CustomerPaymentPayor, ClientPaymentPayor } from '../../types/payment-find-payor.type';
 import { PaymentDetails } from '../../types/payment-details.type';
 import { PaymentSource } from '../../types/payment-source.type';
 import { PaymentDocumentBatch } from '../../types/payment-document-batch.type';
@@ -34,11 +34,9 @@ export class PaymentCreationComponent {
     value: -1,
   }; // stepper validation - sources
 
-  public paymentPayorCustomer: CustomerPaymentPayorResponseEntity | null = null;
-  public paymentPayorClient: ClientPaymentPayorResponseEntity | null = null;
+  public paymentPayorCustomer: CustomerPaymentPayor | null = null;
+  public paymentPayorClient: ClientPaymentPayor | null = null;
   public paymentPayorAtradius: AtradiusPaymentPayorResponseEntity | null = null;
-  public paymentPayorCustomerSearchTerms: CustomerPaymentPayorPayload | null = null;
-  public paymentPayorClientSearchTerms: ClientPaymentPayorPayload | null = null;
 
   public paymentDetails: PaymentDetails | null = null;
 
@@ -141,15 +139,15 @@ export class PaymentCreationComponent {
   }
 
   applyPaymentPayor(
-    paymentPayor: CustomerPaymentPayorResponseEntity 
-    | ClientPaymentPayorResponseEntity 
+    paymentPayor: CustomerPaymentPayor 
+    | ClientPaymentPayor 
     | AtradiusPaymentPayorResponseEntity): void {
-      if (paymentPayor instanceof CustomerPaymentPayorResponseEntity) {
-        console.log("paymentPayor instanceof CustomerPaymentPayorResponseEntity");
+      if (paymentPayor instanceof CustomerPaymentPayor) {
+        console.log("paymentPayor instanceof CustomerPaymentPayor");
         this.paymentPayorCustomer = paymentPayor;
         this.steps = this.updateStepperSettings();
-      } else if (paymentPayor instanceof ClientPaymentPayorResponseEntity) {
-        console.log("paymentPayor instanceof ClientPaymentPayorResponseEntity");
+      } else if (paymentPayor instanceof ClientPaymentPayor) {
+        console.log("paymentPayor instanceof ClientPaymentPayor");
         this.paymentPayorClient = paymentPayor;
         this.steps = this.updateStepperSettings();
       } else if (paymentPayor instanceof AtradiusPaymentPayorResponseEntity) {
@@ -174,14 +172,6 @@ export class PaymentCreationComponent {
     console.log('isPaymentPayorApplied()', result);
     return result; 
   }
-
-  paymentPayorCustomerSearch(payload: CustomerPaymentPayorPayload): void {
-    this.paymentPayorCustomerSearchTerms = payload;
-  }  
-
-  paymentPayorClientSearch(payload: ClientPaymentPayorPayload): void {
-    this.paymentPayorClientSearchTerms = payload;
-  }  
 
   applyPaymentDetails(paymentDetails: PaymentDetails): void {
     this.paymentDetails = paymentDetails;

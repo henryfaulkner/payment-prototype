@@ -1,5 +1,5 @@
 export type PaymentDocument = {
-  id: number;
+  iD: number;
   fileName: string;
   storageUrl: string;
 };

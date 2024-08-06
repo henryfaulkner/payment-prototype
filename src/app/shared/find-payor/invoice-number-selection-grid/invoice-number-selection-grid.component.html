@@ -1,0 +1,133 @@
+<div class="invoice-number-selection-grid">
+    <form
+        class="search-form" 
+        [formGroup]="searchForm" 
+        (ngSubmit)="onSearch()"
+    >
+        <div class="form-group">
+            <label for="InvoiceNumber">Invoice Number</label>
+            <input
+                type="text"
+                id="InvoiceNumber"
+                formControlName="InvoiceNumber"
+                class="form-control"
+            />
+        </div>
+  
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <kendo-grid
+        *ngIf="!isErrored"
+        [data]="gridView"
+        [kendoGridBinding]="gridData"
+        [sortable]="true"
+        [loading]="isLoading"
+        [columnMenu]="{ filter: true }"
+        [height]="height"
+  
+        [pageSize]="pageSize"
+        [skip]="skip"
+        [pageable]="{
+            buttonCount: buttonCount,
+            info: info,
+            type: type,
+            pageSizes: pageSizes,
+            previousNext: previousNext,
+            position: position
+        }"
+        (pageChange)="pageChange($event)"
+
+        [selectable]="{
+            checkboxOnly: false,
+            mode: 'multiple'             
+        }"
+        kendoGridSelectBy="invoiceNumber"
+        [(selectedKeys)]="selectedIds"
+        (selectionChange)="onCheckboxChange($event)"
+    >
+        <kendo-grid-checkbox-column
+            title="Select"
+            [showSelectAll]="false"
+            [width]="20"
+            [columnMenu]="false"
+        ></kendo-grid-checkbox-column>
+
+        <kendo-grid-column
+            field="invoiceNumber"
+            title="Invoice #"
+            [width]="40"
+            filter="text"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="clientName"
+            title="Client"
+            [width]="80"
+            filter="text"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="customerName"
+            title="Customer"
+            [width]="80"
+            filter="text"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="invoiceAmount"
+            title="Invoice Amount"
+            [width]="60"
+            filter="numeric"
+            format="c2"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="balance"
+            title="Balance"
+            [width]="60"
+            filter="numeric"
+            format="c2"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="reserveAmount"
+            title="Reserve Amount"
+            [width]="60"
+            filter="numeric"
+            format="c2"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="chargeAmount"
+            title="Charge Amount"
+            [width]="60"
+            filter="numeric"
+            format="c2"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="approvedAmount"
+            title="Approved Amount"
+            [width]="60"
+            filter="numeric"
+            format="c2"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="dPD"
+            title="DPD"
+            [width]="30"
+            filter="numeric"
+            format="c2"
+        ></kendo-grid-column>
+
+        <kendo-grid-column
+            field="purchaseDate"
+            title="Purchase Date"
+            [width]="40"
+            filter="date"
+            format="MM/dd/yyyy"
+        ></kendo-grid-column>
+    </kendo-grid>
+</div>

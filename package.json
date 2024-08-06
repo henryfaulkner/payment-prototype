@@ -45,6 +45,7 @@
     "@progress/kendo-svg-icons": "^3.0.0",
     "@progress/kendo-theme-default": "^8.2.1",
     "faker": "^5.5.3",
+    "lodash": "^4.17.21",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

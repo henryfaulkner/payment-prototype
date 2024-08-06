@@ -28,6 +28,11 @@ import { PaymentsGridComponent } from './shared/payments-grid/payments-grid.comp
 import { CreatePaymentDocumentBladeComponent } from './shared/blades/create-payment-document-blade/create-payment-document-blade.component';
 import { BladeContainerComponent } from './shared/blade-container/blade-container.component';
 import { ModifyPaymentDocumentBladeComponent } from './shared/blades/modify-payment-document-blade/modify-payment-document-blade.component';
+import { CustomerSearchWidgetCustomerNameComponent } from './shared/find-payor/customer-search-widgets/customer-name/customer-name.component';
+import { ClientSearchWidgetClientNameComponent } from './shared/find-payor/client-search-widgets/client-name/client-name.component';
+import { ClientSearchWidgetInvoiceNumberComponent } from './shared/find-payor/client-search-widgets/invoice-number/invoice-number.component';
+import { InvoiceNumberSelectionGridComponent } from './shared/find-payor/invoice-number-selection-grid/invoice-number-selection-grid.component';
+import { CustomerSearchWidgetInvoiceNumberComponent } from './shared/find-payor/customer-search-widgets/invoice-number/invoice-number.component';
 
 const components = [
   AppComponent,
@@ -46,7 +51,13 @@ const components = [
   PaymentApplicationInvoiceGridComponent, 
   PaymentsGridComponent, 
   CreatePaymentDocumentBladeComponent, 
-  BladeContainerComponent
+  BladeContainerComponent, 
+  ModifyPaymentDocumentBladeComponent, 
+  CustomerSearchWidgetCustomerNameComponent,
+  ClientSearchWidgetClientNameComponent,
+  ClientSearchWidgetInvoiceNumberComponent,
+  CustomerSearchWidgetInvoiceNumberComponent,
+  InvoiceNumberSelectionGridComponent
 ];
 
 const modules = [
@@ -63,7 +74,7 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [...components, ModifyPaymentDocumentBladeComponent],
+  declarations: [...components],
   imports: [...modules],
   providers: [...components, ...modules, NotificationService,],
   bootstrap: [AppComponent],

@@ -26,8 +26,8 @@ export class PaymentCreationComponent {
 
   public paymentDocumentBatch: PaymentDocumentBatch = {
     paymentDocuments: [],
-    batchNotes: '',
   };
+  batchNotes = '';
 
   public paymentSource: PaymentSource = {
     name: 'Pick the Payment Source',
@@ -233,7 +233,7 @@ export class PaymentCreationComponent {
       reversalDate: null,
       reversalReasonID: null,
       clientCustomerID: this.getClientCustomerId(),
-      notes: this.paymentDocumentBatch.batchNotes,
+      notes: this.batchNotes,
       sourceFundingTransactionID: null,
       transactionKey: null,
     };

@@ -1,0 +1,207 @@
+.k-input-solid:focus,
+.k-input-solid.k-focus {
+  background-color: #ebebeb;
+}
+
+.k-floating-label-container > .k-label,
+.k-floating-label-container.k-focus > .k-label {
+  left: 9px !important;
+  top: 10px !important;
+  color: $now-green-primary !important;
+  display: block !important;
+  background-color: $soft-white !important;
+  padding: 0 4px !important;
+  font-size: 12px !important;
+
+  .k-input-solid {
+    background-color: $soft-white;
+  }
+}
+
+.k-floating-label-container.k-empty {
+  .k-input {
+    height: 50px;
+
+    @media (max-width: $mobile-breakpoint) {
+      margin-left: 4px;
+    }
+
+    @include input-border;
+    @include onboarding-input-width;
+  }
+
+  .k-label {
+    left: 9px !important;
+    top: 35px !important;
+    color: $placeholder-grey !important;
+    background-color: $white !important;
+    font-size: 14px !important;
+  }
+
+  &:focus-within > .k-label {
+    left: 9px !important;
+    top: 10px !important;
+    color: $now-green-primary !important;
+    display: block !important;
+    background-color: $soft-white !important;
+    padding: 0 4px !important;
+  }
+}
+
+.k-floating-label-container .k-input-inner {
+  border: none !important;
+}
+
+.kendo-numerictextbox {
+  .k-input-spinner {
+    display: none !important;
+  }
+}
+
+.k-input-button.k-button.k-icon-button.k-button-md.k-button-solid.k-button-solid-base {
+  display: none !important;
+}
+
+.k-floating-label-container.k-empty.k-dropdown {
+  .k-label,
+  .k-picker-solid {
+    top: 35px;
+    color: $placeholder-grey;
+  }
+
+  &:focus-within > .k-label,
+  .k-picker-solid {
+    left: 9px;
+    top: 10px;
+    color: $now-green-primary;
+    display: block;
+    background-color: $soft-white;
+    padding: 0 4px;
+  }
+}
+
+.tellUsTextBox {
+  .k-input {
+    height: 50px !important;
+
+    @include onboarding-input-width-important;
+  }
+}
+
+.kendo-textbox {
+  .k-label {
+    font-family: AcuminPro, sans-serif;
+  }
+}
+
+.kendo-dropdownlist {
+  .k-label {
+    font-family: AcuminPro, sans-serif;
+  }
+
+  .k-input-value-text {
+    height: 36px;
+
+    @media (max-width: $tablet-breakpoint) {
+      height: 32px;
+    }
+  }
+
+  .k-dropdown .k-list .k-item {
+    font-family: AcuminPro, sans-serif !important;
+  }
+}
+
+.popup-class {
+  font-family: AcuminPro, sans-serif !important;
+}
+
+.signUpButtons {
+  .app-stateful-primary-button {
+    @include onboarding-input-width;
+  }
+}
+
+.k-form-hint,
+.k-form-error {
+  font-family: AcuminPro, sans-serif !important;
+  font-style: normal;
+}
+
+.signUpTextBoxs {
+  .k-input {
+    height: 50px !important;
+
+    @include onboarding-input-width-important;
+  }
+}
+
+//Login screen scss overide
+
+//Kendo group textbox
+.k-textbox-container {
+  .k-input-inner {
+    height: 100%;
+    font-size: xxx-large;
+  }
+
+  .k-rounded-md {
+    border-radius: 8px;
+  }
+}
+
+.grid-item {
+  .k-rounded-md {
+    border-radius: 10px !important;
+    height: 50px !important;
+
+    @include input-border;
+    @include onboarding-input-width-important;
+  }
+}
+
+.k-form-error {
+  margin-bottom: -5px !important;
+}
+
+//to remove upload and clear button and remove button for kendo upload
+.k-actions {
+  display: none;
+}
+
+.k-button-flat {
+  display: none;
+}
+
+.k-upload .k-upload-files {
+  display: none;
+}
+
+// .k-button-solid-base {
+//   display: none;
+// }
+
+.k-checkbox-label {
+  .k-label {
+    min-width: fit-content;
+    width: 150px;
+  }
+}
+
+.k-checkbox-label {
+  font-family: "DIN2014Regular", sans-serif;
+}
+
+.kendo-textarea {
+  .k-label {
+    font-family: AcuminPro, sans-serif;
+  }
+}
+
+.k-picker-md .k-input-inner {
+  padding: 0 8px !important;
+}
+
+.k-input-spinner {
+  display: none !important;
+}

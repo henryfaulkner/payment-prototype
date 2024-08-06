@@ -1,1 +1,24 @@
-<p>payment-document-upload works!</p>
+<div class="payment-document-upload">
+    <app-payment-documents 
+        [selectedDocuments]="paymentDocumentBatch.paymentDocuments"
+        (selectEvent)="openModifyPaymentDocumentBlade($event)"
+    ></app-payment-documents>
+
+    <button (click)="openCreatePaymentDocumentBlade({paymentDocuments:[]})">Create</button>
+    
+    <button (click)="openModifyPaymentDocumentBlade({paymentDocuments:[]})">Modify</button>
+</div>
+
+<app-create-payment-document-blade
+    [title]="createBladeTitle"
+    [bladeHashId]="createBladeHashId"
+    [bladeDocument]="createBladeDocument"
+    (saveEvent)="createBladeEventHandler($event)"
+></app-create-payment-document-blade>
+
+<app-create-payment-document-blade
+    [title]="modifyBladeTitle"
+    [bladeHashId]="modifyBladeHashId"
+    [bladeDocument]="modifyBladeDocument"
+    (saveEvent)="modifyBladeEventHandler($event)"
+></app-create-payment-document-blade>

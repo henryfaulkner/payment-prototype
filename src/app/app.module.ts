@@ -25,6 +25,9 @@ import { ReleasedPaymentsComponent } from './pages/released-payments/released-pa
 import { UnreleasedPaymentsComponent } from './pages/unreleased-payments/unreleased-payments.component';
 import { PaymentApplicationInvoiceGridComponent } from './shared/payment-application-invoice-grid/payment-application-invoice-grid.component';
 import { PaymentsGridComponent } from './shared/payments-grid/payments-grid.component';
+import { CreatePaymentDocumentBladeComponent } from './shared/blades/create-payment-document-blade/create-payment-document-blade.component';
+import { BladeContainerComponent } from './shared/blade-container/blade-container.component';
+import { ModifyPaymentDocumentBladeComponent } from './shared/blades/modify-payment-document-blade/modify-payment-document-blade.component';
 
 const components = [
   AppComponent,
@@ -37,7 +40,13 @@ const components = [
   FindClientPayorComponent,
   PaymentCreationComponent, 
   PaymentApplicationComponent, 
-  PaymentDocumentUploadComponent,
+  PaymentDocumentUploadComponent, 
+  ReleasedPaymentsComponent, 
+  UnreleasedPaymentsComponent, 
+  PaymentApplicationInvoiceGridComponent, 
+  PaymentsGridComponent, 
+  CreatePaymentDocumentBladeComponent, 
+  BladeContainerComponent
 ];
 
 const modules = [
@@ -54,9 +63,9 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [...components, ReleasedPaymentsComponent, UnreleasedPaymentsComponent, PaymentApplicationInvoiceGridComponent, PaymentsGridComponent],
+  declarations: [...components, ModifyPaymentDocumentBladeComponent],
   imports: [...modules],
-  providers: [...components, ...modules, NotificationService],
+  providers: [...components, ...modules, NotificationService,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,16 @@
+<div class="blade-container">
+    <div class="controls-container {{this.isOpen ? 'showNg' : 'hideNg'}}" #tooltipContainer>
+        <div class="cross">
+            <a (click)="this.closeBlade()" (keydown.enter)="this.closeBlade()"
+                (keydown.Space)="this.closeBlade()" tabindex="{{this.isOpen ? '0' : '-1'}}">
+                X
+            </a>
+        </div>
+
+        <div class="content">
+            <h2>{{title}}</h2>
+
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

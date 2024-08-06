@@ -40,8 +40,6 @@ export class PaymentDocumentsComponent implements OnInit {
   @Input() selectedDocuments: PaymentDocument[] = [];
   @Output() selectEvent = new EventEmitter<PaymentDocumentBatch>();
 
-  batchNotes = '';
-
   constructor(private pms: PaymentService, 
     private logger: LoggerService,
     private kns: KendoNotificationService,  
@@ -106,7 +104,7 @@ export class PaymentDocumentsComponent implements OnInit {
 
     event.deselectedRows.forEach((x: RowArgs) => {
       const doc = x.dataItem as PaymentDocument;
-      const index = this.selectedDocuments.findIndex(x => x.iD === doc.iD);
+      const index = this.selectedDocuments.findIndex(x => x.id === doc.id);
       if (index !== -1) {
         this.selectedDocuments.splice(index, 1);
       }
@@ -114,12 +112,11 @@ export class PaymentDocumentsComponent implements OnInit {
 
     this.selectEvent.emit({
       paymentDocuments: this.selectedDocuments,
-      batchNotes: this.batchNotes,
     });
   }
 
   mapSelectedKeys(selectedDocs: PaymentDocument[]): number[] {
-    return selectedDocs.map((x) => x.iD);
+    return selectedDocs.map((x) => x.id);
   }
 
   /**

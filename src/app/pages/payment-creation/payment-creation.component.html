@@ -17,9 +17,20 @@
     >
         <ng-container *ngIf="currentStep === stepIndexes.Documents">
             <app-payment-documents 
-            [selectedDocuments]="paymentDocumentBatch.paymentDocuments"
-            (selectEvent)="applyPaymentDocuments($event)"
+                [selectedDocuments]="paymentDocumentBatch.paymentDocuments"
+                (selectEvent)="applyPaymentDocuments($event)"
             ></app-payment-documents>
+
+            <div class="notes-container">
+                <kendo-label text="Document Batch Notes">
+                    <kendo-textarea
+                      placeholder="Assign batch notes here... (Optional)"
+                      [rows]="3"
+                      resizable="vertical"
+                      [(ngModel)]="batchNotes"
+                    ></kendo-textarea>
+                </kendo-label>
+            </div>
         </ng-container>
 
         <ng-container *ngIf="currentStep === stepIndexes.Sources">

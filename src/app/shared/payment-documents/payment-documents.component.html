@@ -66,15 +66,4 @@
             </ng-container>
         </ng-template>
     </kendo-grid>
-
-    <div class="notes-container" *ngIf="paymentId === null">
-        <kendo-label text="Document Batch Notes">
-            <kendo-textarea
-              placeholder="Assign batch notes here... (Optional)"
-              [rows]="3"
-              resizable="vertical"
-              [(ngModel)]="batchNotes"
-            ></kendo-textarea>
-        </kendo-label>
-    </div>
 </div>

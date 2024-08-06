@@ -1,0 +1,232 @@
+@import "../variables/colors";
+@import "../variables/breakpoints";
+@import "../variables/font-size";
+@import "../variables/font-weight";
+@import "../variables/misc";
+
+@mixin generic-onboarding-container() {
+  position: absolute;
+  min-height: fit-content;
+  min-width: fit-content;
+  background-color: $soft-white;
+  border-radius: $border-radius-large;
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 10;
+}
+
+@mixin mobile-onboarding-container() {
+  height: 100vh;
+  width: 100vw;
+  inset: 0;
+  margin: 0;
+  border-radius: 0;
+}
+
+@mixin card-shadow() {
+  box-shadow: 0 3px 6px #00000029;
+}
+
+@mixin background-opacity($color, $opacity: 1) {
+  background: $color;
+
+  /* The Fallback */
+  background: rgba($color, $opacity);
+}
+
+@mixin input-border() {
+  border: 1px solid rgb(0 0 0 / 12%);
+  border-radius: $border-radius-small;
+}
+
+@mixin normal-button-hover() {
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    transform: scale(1.02);
+  }
+}
+
+@mixin onboarding-input-width() {
+  width: 400px;
+
+  @media (max-width: $tablet-breakpoint) {
+    width: 350px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 250px;
+  }
+}
+
+@mixin onboarding-input-width-important() {
+  width: 400px !important;
+
+  @media (max-width: $tablet-breakpoint) {
+    width: 350px !important;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 250px !important;
+  }
+}
+
+@mixin onboarding-input-width-confirm-screen() {
+  width: 300px;
+
+  @media (max-width: $tablet-breakpoint) {
+    width: 150px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 80px;
+  }
+}
+
+@mixin primary-button-styles() {
+  display: grid;
+  align-content: center;
+  height: 50px;
+  background-color: $now-green-secondary;
+  color: $now-green-primary;
+  border: none;
+
+  // padding: 15px 32px;
+  text-align: center;
+  transition-duration: 0.4s;
+
+  // margin: 16px 15px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: $border-radius-small;
+  font-family: "DIN2014DemiBold", sans-serif;
+
+  &:hover {
+    background-color: $now-green-primary;
+    color: $white;
+  }
+
+  @include normal-button-hover;
+  @include onboarding-input-width();
+}
+
+@mixin primary-button-signup-styles() {
+  display: grid;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: $now-green-secondary;
+  color: $now-green-primary;
+  border: none;
+
+  // padding: 15px 32px;
+  text-align: center;
+  transition-duration: 0.4s;
+
+  // margin: 16px 15px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: $border-radius-small;
+  font-family: "DIN2014DemiBold", sans-serif;
+
+  &:hover {
+    background-color: $now-green-primary;
+    color: $white;
+  }
+
+  @include normal-button-hover;
+}
+
+@mixin primary-button-business-styles() {
+  display: grid;
+  align-content: center;
+  background-color: $now-green-secondary;
+  color: $now-green-primary;
+  border: none;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: $border-radius-small;
+  font-family: "DIN2014DemiBold", sans-serif;
+
+  &:hover {
+    background-color: $now-green-primary;
+    color: $white;
+  }
+
+  @include normal-button-hover;
+}
+
+@mixin secondary-button-styles() {
+  display: grid;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  color: $now-green-primary;
+  border: none;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  font-size: $font-size-normal;
+  cursor: pointer;
+  border-radius: $border-radius-normal;
+
+  a {
+    font-family: "DIN2014Bold", sans-serif;
+  }
+
+  @include background-opacity($now-green-secondary, 0);
+  @include normal-button-hover;
+
+  &:hover {
+    @include background-opacity($now-green-secondary, 1);
+  }
+}
+
+@mixin link-styles() {
+  a {
+    cursor: pointer;
+  }
+
+  // a * {
+  //   text-decoration: underline;
+  // }
+}
+
+@mixin box-shadow-hoverstate($color) {
+  box-shadow: 2px 3px $color;
+}
+
+@mixin default-input-style() {
+  border-radius: $border-radius-normal;
+}
+
+@mixin default-scrollbar() {
+  &::-webkit-scrollbar {
+    width: 10px;
+
+    /* width of the entire scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+
+    /* color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    /* color of the scroll thumb */
+    background-color: $now-green-primary;
+
+    /* roundness of the scroll thumb */
+    border-radius: $border-radius-normal;
+
+    /* creates padding around scroll thumb */
+  }
+}

@@ -1,0 +1,60 @@
+@import "../../../assets/styles/utility/utility.scss";
+
+$height: 120px;
+$container-width: 300px;
+$container-horizontal-padding: 20px;
+$label-width: 0px;
+$mvc-header-height: 70px;
+
+.blade-container {
+    border: 2px solid red;
+    z-index: 10;
+    position: absolute;
+    top: -$mvc-header-height;
+    right: -$container-width - (2 * $container-horizontal-padding) +
+      (2 * $label-width);
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+    .controls-container {
+        background-color: $now-green-secondary;
+        position: absolute;
+        top: $mvc-header-height;
+        height: calc(100% - $mvc-header-height);
+        width: $container-width;
+        right: 0;
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding: 0 $container-horizontal-padding;
+    
+        @include card-shadow;
+        @include hide-show-blur-translate(
+          5px,
+          0,
+          0,
+          -$container-width - (2 * $container-horizontal-padding) + (2 *
+                $label-width),
+          0,
+          1s
+        );
+    
+        .cross {
+          position: absolute;
+          right: 0;
+          padding-top: 25px;
+          padding-right: 25px;
+          align-self: flex-end;
+          cursor: pointer;
+    
+          a {
+            color: $white;
+            font-weight: $font-weight-bold;
+            font-size: $font-size-extra-large;
+          }
+        }
+    }
+}

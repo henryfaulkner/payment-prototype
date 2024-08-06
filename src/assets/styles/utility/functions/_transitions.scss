@@ -1,0 +1,104 @@
+@mixin hide-show-blur($blur: 5px, $transition-time: 1s) {
+    &.hideNg {
+        visibility: hidden;
+        opacity: 0;
+        filter: blur($blur);
+        transition: all;
+    }
+
+    &.showNg {
+        visibility: visible;
+        opacity: 1;
+        filter: blur(0);
+        transition: visibility 0s, opacity $transition-time;
+    }
+}
+
+@mixin hide-show-translate(
+    $start-translate-x: 0, 
+    $start-translate-y: 0,
+    $end-translate-x: 0, 
+    $end-translate-y: 0,
+    $transition-time: 1s,
+    $overflow: unset, 
+) {
+    position: absolute;
+
+    & {
+        // set $overflow to hide child element from overflowing parent element bounds
+        position: relative;
+        overflow: $overflow; 
+    }
+
+    &.hideNg {
+        transform: translate($start-translate-x, $start-translate-y);
+        transition: all;
+    }
+
+    &.showNg {
+        transform: translate($end-translate-x, $end-translate-y);
+        transition: all $transition-time;
+    }
+
+    @media (prefers-reduced-motion) {
+        .hide-show-content {
+            transition: none;
+        }
+    }
+}
+
+@mixin hide-show-blur-translate-wrapper() {
+    & {
+        overflow: hidden;
+    }
+
+    &.hideNg {
+        visibility: hidden;
+        transition: visibility 0s;
+    }
+
+    &.showNg {
+        visibility: visible;
+        transition: visibility 0s;
+    }
+}
+
+@mixin hide-show-blur-translate(
+    $blur: 5px, 
+    $start-translate-x: 0, 
+    $start-translate-y: 0,
+    $end-translate-x: 0, 
+    $end-translate-y: 0,
+    $transition-time: 1s,
+    $overflow: unset, 
+) {
+    position: absolute;
+
+    & {
+        // set $overflow to hide child element from overflowing parent element bounds
+        position: relative;
+        overflow: $overflow; 
+    }
+
+    &.hideNg {
+        visibility: hidden;
+        opacity: 0;
+        filter: blur($blur);
+        transform: translate($start-translate-x, $start-translate-y);
+        transition: opacity 0s, transform 0s;
+    }
+
+    &.showNg {
+        visibility: visible;
+        opacity: 1;
+        filter: blur(0);
+        transform: translate($end-translate-x, $end-translate-y);
+        transition: visibility 0s, opacity $transition-time, transform $transition-time;
+    }
+
+    @media (prefers-reduced-motion) {
+        .hide-show-content {
+            transition: none;
+        }
+    }
+}
